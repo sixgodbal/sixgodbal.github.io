@@ -1,66 +1,37 @@
-# Edition
+## Welcome to GitHub Pages
 
-Product documentation template for Jekyll. Browse through a [live demo](https://long-pig.cloudvent.net/).
-Start documenting your product, application, service or website with this configurable theme.
+You can use the [editor on GitHub](https://github.com/sixgodbal/sixgodbal.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
 
-![Edition template screenshot](images/_screenshot.png)
+Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-Edition was made by [CloudCannon](http://cloudcannon.com/), the Cloud CMS for Jekyll.
+### Markdown
 
-Find more templates, themes and step-by-step Jekyll tutorials at [CloudCannon Academy](https://learn.cloudcannon.com/).
+Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-## Features
+```markdown
+Syntax highlighted code block
 
-* Two column layout
-* Full text search
-* Pre-styled components
-* Auto-generated navigation based on category
-* Optimised for editing in [CloudCannon](http://cloudcannon.com/)
-* Change log
-* RSS/Atom feed
-* SEO tags
-* Google Analytics
+# Header 1
+## Header 2
+### Header 3
 
-## Setup
+- Bulleted
+- List
 
-1. Add your site and author details in `_config.yml`.
-2. Get a workflow going to see your site's output (with [CloudCannon](https://app.cloudcannon.com/) or Jekyll locally).
+1. Numbered
+2. List
 
-## Develop
+**Bold** and _Italic_ and `Code` text
 
-Edition was built with [Jekyll](http://jekyllrb.com/) version 3.3.1, but should support newer versions as well.
+[Link](url) and ![Image](src)
+```
 
-Install the dependencies with [Bundler](http://bundler.io/):
+For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-~~~bash
-$ bundle install
-~~~
+### Jekyll Themes
 
-Run `jekyll` commands through Bundler to ensure you're using the right versions:
+Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sixgodbal/sixgodbal.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-~~~bash
-$ bundle exec jekyll serve
-~~~
+### Support or Contact
 
-## Editing
-
-Edition is already optimised for adding, updating and removing documentation pages in CloudCannon.
-
-### Documentation pages
-
-* Add, update or remove a documentation page in the *Documentation* collection.
-* Change the category of a documentation page to move it to another section in the navigation.
-* Documentation pages are organised in the navigation by category, with URLs based on the path inside the `_docs` folder.
-
-### Change log
-
-* Add, update or remove change log entries from your posts.
-* Tag entries as minor or major in the front matter.
-
-### Search
-
-* Add `excluded_in_search: true` to any documentation page's front matter to exclude that page in the search results.
-
-### Navigation
-
-* Change `site.show_full_navigation` to control all or only the current navigation group being open.
+Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
