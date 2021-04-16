@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "UntiyShader 语义"
+title:  "UnityShader 语义"
 date:   2021-04-15 14:27:54
 categories: 编程
 tags: UnityShader
