@@ -5,6 +5,11 @@ layout: default
 <div class="page clearfix" post>
     <div class="left">
         <h1>{{page.title}}</h1>
+		<!-- 在正文开头添加网易云音乐插件 -->
+		{% if page.music-id %}
+		{% include cloud-music.html %}
+		{% endif %} 
+		{{ content }}
         <div class="label">
 
             <div class="label-card">
@@ -76,7 +81,7 @@ layout: default
             <!-- Content -->
             <div class="side content">
                 <div>
-                    Content
+                    文章
                 </div>
                 <ul id="content-side" class="content-ul">
                     {% if hasSimilar.size > 0 %}
