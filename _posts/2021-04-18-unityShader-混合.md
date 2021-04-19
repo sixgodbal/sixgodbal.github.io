@@ -2,13 +2,16 @@
 layout: post
 title:  "UnityShader 混合"
 date:   2021-04-18 14:27:54
-categories: 编程
-tags: UnityShader
+categories: UnityShader
+tags: 编程
+excerpt: true
 ---
-# 
+
 
 * content
 {:toc}
+
+
 [风宇冲原文传送门：](http://blog.sina.com.cn/s/blog_471132920101d8z5.html)
 
 **用于生成透明对象**

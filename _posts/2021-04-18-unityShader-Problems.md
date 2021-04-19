@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "UnityShader 语义"
+title:  "UnityShader Problems"
 date:   2021-04-18 14:27:54
-categories: 编程
-tags: UnityShader
+categories: UnityShader
+tags: 编程
+author: LS
 ---
 # >>UnityShader 知识点
 

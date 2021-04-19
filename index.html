@@ -8,7 +8,7 @@ layout: default
 		<br/><font size="5" color="blue">梦断魂&emsp; 步阑珊&emsp; 千杯醉&emsp; 百花残</font>
         <hr>
         <ul>
-            {% for post in paginator.posts %}
+            {% for post in site.posts %}
               <li>
                 <h2>
                   <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>

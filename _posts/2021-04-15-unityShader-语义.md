@@ -2,8 +2,10 @@
 layout: post
 title:  "UnityShader 语义"
 date:   2021-04-15 14:27:54
-categories: 编程
-tags: UnityShader
+categories: UnityShader
+tags: 编程
+author: LS
+mathjax: true
 ---
 ## >>UnityShader 语义
 * content
