@@ -1,4 +1,4 @@
-Shader "0012 GrayBase"
+Shader "SixGodShader/0012 GrayBase"
 {
     Properties{
         [PerRendererData] _MainTex("Sprite Texture", 2D) = "white" {}

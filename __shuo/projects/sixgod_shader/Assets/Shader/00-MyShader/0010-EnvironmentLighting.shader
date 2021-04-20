@@ -1,7 +1,7 @@
 //上面的示例不考虑任何环境光照或光照探针。我们来解决这个问题！
 // 事实证明，我们可以通过添加一行代码来实现这一目标。环境光和光照探针数据都以球谐函数形式传递给着色器，
 //__UnityCG.cginc__ include 文件 中的 ShadeSH9 函数在给定世界空间法线的情况下完成所有估算工作。
-Shader "0010 EnvironmentLighting"
+Shader "SixGodShader/0010 EnvironmentLighting"
 {
     Properties{
         [NoScaleOffset] _MainTex("Texture",2D) = "white"{}

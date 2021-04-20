@@ -1,5 +1,5 @@
 
-Shader "0011 ShadowBase"
+Shader "SixGodShader/0011 ShadowBase"
 {
 
 }
