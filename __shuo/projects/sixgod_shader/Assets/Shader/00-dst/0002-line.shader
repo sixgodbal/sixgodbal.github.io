@@ -45,12 +45,11 @@ Shader "SixGodSdf/0002 line" {
          
          fixed4 frag (v2f f) : SV_TARGET
          {
-            fixed2 pa = f.uv.xy - fixed2(_Point1_X, _Point1_Y); //A->P的向量
-            fixed2 ba = fixed2(_Point2_X, _Point2_Y) - fixed2(_Point1_X, _Point1_Y);
-            float h = clamp(dot(pa, ba) / dot(ba, ba), 0, 1); //clamp 值限制在[0,1]之间
-            fixed len = (1 - min(length(pa - ba * h), 1)) * 1.2;
+            fixed2 ap = f.uv.xy - fixed2(_Point1_X, _Point1_Y); //A->P向量
+            fixed2 ab = fixed2(_Point2_X, _Point2_Y) - fixed2(_Point1_X, _Point1_Y);//A->B向量
+            float h = clamp(dot(ap, ab) / dot(ab, ab), 0, 1); //系数h A点为向量起始 A左侧、B右侧区域系数为0 AB间区域系数为AP投影比例
+            fixed len = (1 - min(length(ap - ab * h), 1));
             fixed4 c = fixed4(len, len, len, 1);
-            //log10fixed4 c = fixed4(1, 1, 1, 1);
             return c;
          }
 
