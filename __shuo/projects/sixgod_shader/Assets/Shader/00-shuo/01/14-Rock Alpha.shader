@@ -1,4 +1,4 @@
-﻿Shader "Liusu/13 Rock Normal Map"
+﻿Shader "Liusu/14 Rock Alpha"
 {
     Properties{
         //_Diffuse("Diffuse", Color) = (1,1,1,1)
@@ -6,12 +6,16 @@
         _MainTex("Main Tex", 2D) = "white"{}
         _NormalMap("Normal Map", 2D) = "bump"{} //bump模型自带贴图
         _BumpScale("Bump Scale", Float) = 1
+        _AlphaScale("Alpha Scale", Range(0, 1)) = 0.5
     }
     SubShader
     {
+        Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
         Pass
         {
             Tags{"LightMode"="ForwardBase"}
+            ZWrite Off //关闭深度写入
+            Blend SrcAlpha OneMinusSrcAlpha
             CGPROGRAM
 #pragma vertex vert
 #pragma fragment frag
@@ -22,6 +26,7 @@
             sampler2D _NormalMap;
             float4 _NormalMap_ST; //_ST获取到偏移值和缩放
             float _BumpScale;
+            float _AlphaScale;
             
             struct a2v{
                 float4 vertex : POSITION;
@@ -65,12 +70,12 @@
                 //fixed3 lightDir = normalize(WorldSpaceLightDir(f.worldVertex));世界中 光方向
                 fixed3 lightDir = normalize(f.lightDir); //切线空间 光方向
 
-                fixed3 texColor = tex2D(_MainTex, f.uv.xy) * _Color;//图片*颜色
+                fixed4 texColor = tex2D(_MainTex, f.uv.xy) * _Color;//图片*颜色
 
-                fixed3 diffuse = _LightColor0.rgb * texColor * max(dot(tangentNormal, lightDir), 0);
+                fixed3 diffuse = _LightColor0.rgb * texColor.rgb * max(dot(tangentNormal, lightDir), 0);
 
                 fixed3 tempColor = diffuse + UNITY_LIGHTMODEL_AMBIENT.rgb * texColor;//漫+高+环境  环境光与图片颜色融合
-                return fixed4(tempColor, 1);
+                return fixed4(tempColor, _AlphaScale * texColor.a);
             }
             ENDCG
         }
