@@ -61,7 +61,7 @@ Shader "0014-flystar" {
                 f.pos = UnityObjectToClipPos(v.vertex);
 
                 float Time = _Time.y;
-                fixed Time_decimal = Time * _TimeScale - floor(Time * _TimeScale);
+                fixed Time_decimal = frac(Time);
                 
                 float angle = radians(_RotateSpeed * _Time.y);
                 fixed _x = (Time_decimal - 0.5) * _ScaleX;
