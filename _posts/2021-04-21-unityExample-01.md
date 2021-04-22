@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "shaderExample 01"
-date:   2021-04-18 14:27:54
+date:   2021-04-21 14:27:54
 categories: UnityShader
 tags: 编程
 excerpt: true
@@ -12,7 +12,7 @@ excerpt: true
 {:toc}
 #### 1.流星
 
-**将贴图形状进行变换实现**
+**通过矩阵变换变换实现**
 
 ```
 Shader "0014-flystar" {
