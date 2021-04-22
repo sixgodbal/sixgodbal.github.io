@@ -6,6 +6,10 @@ Shader "0014-flystar" {
         _TimeScale("Time Scale", Range(-1, 1)) = 1
         _CullBlack("Black BG", Range(0, 3)) = 0
         _AlphaScale("Alpha Scale", Range(0,3)) = 1
+        _OffSetX("OffSet X", Range(-1, 1)) = 0
+        _OffSetY("OffSet Y", Range(-1, 1)) = 0
+        _ScaleX("Scale X", Range(-2, 2)) = 0
+        _ScaleY("Scale Y", Range(-2, 2)) = 0
     }
     SubShader
     {
@@ -29,6 +33,10 @@ Shader "0014-flystar" {
             float _TimeScale;
             float _CullBlack;
             float _AlphaScale;
+            float _ScaleX;
+            float _ScaleY;
+            float _OffSetX;
+            float _OffSetY;
 
             struct a2v {
                 float4 vertex : POSITION;
@@ -40,12 +48,11 @@ Shader "0014-flystar" {
                 fixed   _y : COLOR0;
             };
 
-            
-            fixed2 getStarUV(fixed2 uv, fixed _x, fixed _y, float angle)
+            fixed2 getTran(fixed2 uv, fixed _x, fixed _y, float angle, float scale)
             {
-                fixed2 tempuv = uv.xy + fixed2(_x, _y) - 0.5;
-                fixed2 resultUV = fixed2(tempuv.x * cos(angle) - tempuv.y * sin(angle), tempuv.x * sin(angle) + tempuv.y * cos(angle)) * _Scale + 0.5;
-                return resultUV;
+                return mul(float3x3(cos(angle), -sin(angle), 0, sin(angle), cos(angle), 0, 0, 0, 1), 
+                       mul(float3x3(scale, 0, 0, 0, scale, 0, 0, 0, 1), 
+                       mul(float3x3(1, 0, _x, 0, 1, _y, 0, 0, 1), float3(uv - 0.5, 1)))).xy + 0.5;
             }
 
             v2f vert (a2v v)
@@ -57,14 +64,9 @@ Shader "0014-flystar" {
                 fixed Time_decimal = Time * _TimeScale - floor(Time * _TimeScale);
                 
                 float angle = radians(_RotateSpeed * _Time.y);
-
-                fixed _x = Time_decimal * 0.5 - 0.25;
-                fixed _y = Time_decimal - 0.5;
-
-                fixed2 uv_1 = getStarUV(v.uv.xy, _x, _y, angle);
-                
-                f.uv = uv_1;
-
+                fixed _x = (Time_decimal - 0.5) * _ScaleX;
+                fixed _y = (Time_decimal - 0.5) * _ScaleY;
+                f.uv = getTran(v.uv.xy, _x, _y, angle, _Scale);
                 f._y = _y;
                 return f;
             }
