@@ -39,16 +39,20 @@ Shader "SixGodSdf/0003 Rectangle" {
 
             v2f vert (a2v v)
             {
-            v2f f;
+                v2f f;
                 f.pos = UnityObjectToClipPos(v.vertex);
                 f.uv = v.uv;
                 return f;
             }
+            float getRectangleLength(float2 p, float2 b)
+            {
+                float2 d = abs(p) - b;
+                return length(max(d, 0)) + min( max(d.x, d.y), 0);
+            }
          
             fixed4 frag (v2f f) : SV_TARGET
             {
-                fixed2 d = abs(f.uv.xy - fixed2(_Center_X, _Center_Y)) - fixed2(_RightTop_X, _RightTop_Y);
-                fixed len = (1 - max( min(length(max(d, 0)) + min(max(d.x, d.y), 0), 1), 0 )) * _Rate;
+                fixed len = clamp(1 - getRectangleLength(f.uv.xy - float2(_Center_X, _Center_Y), float2(_RightTop_X, _RightTop_Y)), 0, 1);
                 return fixed4(len, len, len, 1);
             }
             ENDCG

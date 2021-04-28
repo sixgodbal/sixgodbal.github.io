@@ -40,13 +40,16 @@ Shader "SixGodSdf/0001-circular" {
             f.uv = v.uv;
             return f;
          }
+
+         float getCycle(float2 p, float r)
+         {
+             return length(p) - r;
+         }
          
          fixed4 frag (v2f f) : SV_TARGET
          {
-            fixed distance = (1 - min(1, length(f.uv.xy - fixed2(_CycleX, _CycleY)) - _Radius));
-            clip(1 - distance);
-            fixed4 c = fixed4(distance, distance, distance, 0);
-            return c;
+            fixed len = 1 - clamp(getCycle(f.uv.xy - fixed2(_CycleX, _CycleY), _Radius), 0, 1);
+            return fixed4(len, len, len, 1);
          }
 
          ENDCG
