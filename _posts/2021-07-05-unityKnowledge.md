@@ -34,3 +34,17 @@ public class DebugUILine : MonoBehaviour
 #endif
 ```
 
+#### 2.关闭Editor（[雨松Mono](https://www.xuanyusong.com/archives/4578) ）
+
+    using UnityEditor;
+    public class Test {
+        [InitializeOnLoadMethod]
+        static void InitializeOnLoadMethod() {
+            EditorApplication.wantsToQuit -= Quit;
+            EditorApplication.wantsToQuit += Quit;
+        }
+        static bool Quit() {
+            EditorUtility.DisplayDialog("我就是不让你关", "就是不让你关", "不让关");
+            return false; //return true表示可以关闭unity编辑器
+        }
+    }
